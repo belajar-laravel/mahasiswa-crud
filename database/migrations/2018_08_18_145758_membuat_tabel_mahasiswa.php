@@ -17,6 +17,7 @@ class MembuatTabelMahasiswa extends Migration
             $table->string('nim', 15);
             $table->string('nama', 70);
             $table->string('jurusan', 5);
+            $table->primary('nim');
         });
     }
 
