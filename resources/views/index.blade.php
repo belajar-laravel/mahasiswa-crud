@@ -8,16 +8,16 @@
     <div class="container">
         <nav class="navbar navbar-inverse navbar-dark bg-primary">
             <div class="navbar-header">
-                <div class="navbar-title" href="{{ URL::to('/') }}">
+                <div class="navbar-title" href="{{ URL::to('/app') }}">
                     <b>MANAJEMEN MAHASISWA</b>
                 </div>
             </div>
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ URL::to('/') }}">Daftar Mahasiswa</a>
+                    <a class="nav-link" href="{{ URL::to('/app') }}">Daftar Mahasiswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ URL::to('/create') }}">Tambah Data</a>
+                    <a class="nav-link" href="{{ URL::to('/app/create') }}">Tambah Data</a>
                 </li>
             </ul>
         </nav>
@@ -44,7 +44,7 @@
                     <td>{{ $value->nama }}</td>
                     <td>{{ $value->jurusan }}</td>
                     <td>
-                        <a class="btn btn-small btn-warning" href="{{ URL::to('/' . $value->nim . '/edit') }}">Ubah</a>
+                        <a class="btn btn-small btn-warning" href="{{ URL::to('app/' . $value->nim . '/edit') }}">Ubah</a>
                     </td>
                 </tr>
                 @endforeach

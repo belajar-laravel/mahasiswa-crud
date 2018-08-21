@@ -8,16 +8,51 @@
     <div class="container">
         <nav class="navbar navbar-inverse navbar-dark bg-primary">
             <div class="navbar-header">
-                <div class="navbar-title" href="{{ URL::to('/') }}">
+                <div class="navbar-title" href="{{ URL::to('/app') }}">
                     <b>MANAJEMEN MAHASISWA</b>
                 </div>
             </div>
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ URL::to('/') }}">Daftar Mahasiswa</a>
+                    <a class="nav-link" href="{{ URL::to('/app') }}">Daftar Mahasiswa</a>
                 </li>                
             </ul>
         </nav>
+
+        <h1>Edit {{ $mahasiswa->nama }}</h1>
+
+        {{ Html::ul($errors->all()) }}
+
+        {{ Form::model($mahasiswa, ['route' => ['app.update', $mahasiswa->nim], 'method' => 'PUT']) }}
+        <div class="form-group col-sm-5">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">NIM</div>
+                </div>
+                {{ Form::text('nim', null, ['class' => 'form-control']) }}
+            </div>
+        </div>
+
+        <div class="form-group col-sm-5">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">NAMA</div>
+                </div>
+                {{ Form::text('nama', null, ['class' => 'form-control']) }}
+            </div>
+        </div>
+
+        <div class="form-group col-sm-5">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">JURUSAN</div>
+                </div>
+                {{ Form::select('jurusan', array('TI' => 'Teknik Informatika', 'MI' => 'Manajemen Informatika', 'SI' => 'Sistem Informasi'), Input::old('jurusan'), array('class' => 'form-control')) }}
+            </div>
+        </div>
+
+        {{ Form::submit('Simpan', array('class' => 'btn btn-primary col-sm-5')) }}
+        {{ Form::close() }}
     </div>
 </body>
 </html>

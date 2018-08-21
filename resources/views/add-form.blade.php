@@ -8,13 +8,13 @@
     <div class="container">
         <nav class="navbar navbar-inverse navbar-dark bg-primary">
             <div class="navbar-header">
-                <div class="navbar-title" href="{{ URL::to('/') }}">
+                <div class="navbar-title" href="{{ URL::to('app') }}">
                     <b>MANAJEMEN MAHASISWA</b>
                 </div>
             </div>
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ URL::to('/') }}">Daftar Mahasiswa</a>
+                    <a class="nav-link" href="{{ URL::to('app') }}">Daftar Mahasiswa</a>
                 </li>
             </ul>
         </nav>
@@ -25,7 +25,7 @@
 
         {{ Html::ul($errors->all()) }}
 
-        {{ Form::open(array('url' => '/' )) }}
+        {{ Form::open(['url' => 'app', 'method' => 'POST']) }}
         <div class="form-group col-sm-5">
             <div class="input-group">
                 <div class="input-group-prepend">

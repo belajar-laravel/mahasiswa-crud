@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use App\Mahasiswa;
 use Session;
 use Redirect;
+use Input;
 
 class AppController extends Controller
 {
@@ -38,8 +39,18 @@ class AppController extends Controller
     }
 
     public function edit($id) {
-        dump($id);
+        //dump($id);
         $mahasiswa = Mahasiswa::find($id);
         return View::make('edit')->with('mahasiswa', $mahasiswa);
+    }
+
+    public function update($id) {
+        $mahasiswa = Mahasiswa::find($id);
+        $mahasiswa->nama = Input::get('nama');
+        $mahasiswa->jurusan = Input::get('jurusan');
+        $mahasiswa->save();
+
+        Session::flash('message', 'Data telah tersimpan');
+        return Redirect::to('app');
     }
 }
