@@ -44,7 +44,13 @@
                     <td>{{ $value->nama }}</td>
                     <td>{{ $value->jurusan }}</td>
                     <td>
-                        <a class="btn btn-small btn-warning" href="{{ URL::to('app/' . $value->nim . '/edit') }}">Ubah</a>
+                        <div class="d-flex">
+                            <button class="btn btn-small btn-warning mr-2" style="height: 40px"
+                                    href="{{ URL::to('app/' . $value->nim . '/edit') }}">Ubah</button>
+                            {{ Form::open( ['url' => 'app/' . $value->nim, 'method' => 'DELETE'] ) }}
+                                {{ Form::submit('Hapus', ['class' => 'btn btn-danger', 'style' => 'height: 40px;']) }}
+                            {{ Form::close() }}
+                        </div>
                     </td>
                 </tr>
                 @endforeach

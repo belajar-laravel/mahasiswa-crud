@@ -35,11 +35,10 @@ class AppController extends Controller
         $mahasiswa->save();
 
         Session::flash('message', 'Data telah tersimpan');
-        return Redirect::to('/');
+        return Redirect::to('/app');
     }
 
     public function edit($id) {
-        //dump($id);
         $mahasiswa = Mahasiswa::find($id);
         return View::make('edit')->with('mahasiswa', $mahasiswa);
     }
@@ -51,6 +50,14 @@ class AppController extends Controller
         $mahasiswa->save();
 
         Session::flash('message', 'Data telah tersimpan');
+        return Redirect::to('app');
+    }
+
+    public function destroy($id) {
+        $mahasiswa = Mahasiswa::find($id);
+        $mahasiswa->delete();
+
+        Session::flash('message', 'Data ' . $id . ' telah terhapus');
         return Redirect::to('app');
     }
 }
